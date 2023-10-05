@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)
     {
+        //1
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj pierwsza liczbe:");
         double liczba1 = scanner.nextDouble();
@@ -12,8 +13,33 @@ public class Main {
         System.out.println( "Wynik: "+(liczba1-liczba2));
         System.out.println( "Wynik: "+(liczba1*liczba2));
         System.out.println( "Wynik: "+(liczba1/liczba2));
-
+        //2
+        System.out.println("Wprowadz pierwszy ciag: ");
         String str1 = scanner.next();
+        System.out.println("Wprowadz drugi ciag: ");
+        String str2 = scanner.next();
+
+        System.out.println("Ciag 1:" + str1);
+        System.out.println("Ciag 2: " + str2);
+        //3
+        System.out.println("Podaj pierwsza liczbe:");
+        double liczba11 = scanner.nextDouble();
+        System.out.println("Podaj druga liczbe:");
+        double liczba12 = scanner.nextDouble();
+        System.out.println("Podaj trzecia liczbe:");
+        double liczba13 = scanner.nextDouble();
+        System.out.println("Podaj czwarta liczbe:");
+        double liczba14 = scanner.nextDouble();
+
+        double suma = liczba11+liczba12+liczba13+liczba14;
+        System.out.println("Suma:" + suma);
+
+        scanner.close();
+        //4
+        System.out.println("Podaj bok:");
+        double kwadrat = scanner.nextDouble();
+        
+        double pole = kwadrat * kwadrat;
+        System.out.println("Pole:" + pole);
     }
 }
-zad2
