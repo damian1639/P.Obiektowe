@@ -1,3 +1,4 @@
+zad 1
 import java.util.Scanner;
 
 public class Main {
@@ -71,5 +72,33 @@ public class Main {
         {
             System.out.println("nie");
         }
+    }
+}
+zad 3(odwrocona)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args)
+    {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Podaj liczbe: ");
+        int liczba = scanner.nextInt();
+
+        int odwrocona = odwroc(liczba);
+        System.out.println("liczba po: " + odwrocona);
+
+
+    }
+
+    public static int odwroc(int liczba){
+        int n = 0;
+        while(liczba !=0){
+            int cyfra = liczba % 10;
+            n = n * 10 + cyfra;
+            liczba /= 10;
+        }
+        return n;
     }
 }
