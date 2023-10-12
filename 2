@@ -1,0 +1,149 @@
+Losowa liczba:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        System.out.println(random.nextInt());
+
+        }
+
+    }
+///Napisz metodę generateRandomInt, która generuje i zwraca losową liczbę całkowitą i zmiennoprzecinkowa.:
+import java.util.*;
+
+
+public class Main {
+    public static Random random = new Random();
+    public static void main(String[] args) {
+
+        System.out.println(generateRandomDouble());
+
+    }
+    public static int generateRandomInt(){
+
+
+        return random.nextInt();
+    }
+    public static double generateRandomDouble(){
+        return random.nextDouble(0,1);
+    }
+}
+
+///Napisz metodę generateRandomGaussian, która generuje i zwraca losową liczbę zmiennoprzecinkową zgodnie z rozkładem normalnym.:
+import java.util.*;
+
+
+public class Main {
+    public static Random random = new Random();
+    public static void main(String[] args) {
+
+        System.out.println("Losowa liczba: " + losowa());
+
+    }
+    public static double losowa(){
+
+        double RandomGaussian = random.nextGaussian();
+
+        return RandomGaussian;
+    }
+}
+///Losowe prawda falsz:
+import java.util.*;
+
+
+public class Main {
+    public static Random random = new Random();
+    public static void main(String[] args) {
+
+        System.out.println("Losowy boolean: " + losowa());
+
+    }
+    public static boolean losowa(){
+
+        boolean RandomBoolean = random.nextBoolean();
+
+        return RandomBoolean;
+    }
+}
+///odwracanie
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] numbers = {1,2,3,4,5,6,7,8,9,10};
+
+        for(int i=0;i<numbers.length;i++){
+
+            System.out.print(numbers[i]);
+        }
+
+        System.out.println("\nodwrotnie:");
+
+        for(int i = numbers.length - 1; i >= 0; i--){
+            System.out.print(numbers[i]);
+        }
+    }
+}
+///Losowa 20 liczb od 1 do 100 i srednia:
+import java.util.*;
+
+
+public class Main {
+    public static Random random = new Random();
+
+    public static void main(String[] args) {
+
+        int suma=0;
+        for (int i = 0; i < 20; i++) {
+
+            int losowa = random.nextInt(1,100);
+            System.out.print(losowa + " ");
+            suma = suma + losowa;
+
+
+    }
+
+        int srednia= suma/20;
+        System.out.println("\n"+ srednia);
+
+    }
+}
+
+///Najmniejsza i najwieksza
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] numbers = {1,2,3,4,5,6,7,8,49,10,11,12,13,14,15};
+
+        for(int i=0;i<numbers.length;i++){
+
+            System.out.print(numbers[i] + " ");
+        }
+
+        int min = numbers[0];
+        int max = numbers[0];
+
+
+        for(int number : numbers){
+            if(number < min){
+                min = number;
+            }
+            if(number > max){
+                max = number;
+        }
+        }
+        System.out.println("\n"+min);
+        System.out.println(max);
+    }
+}
+Napisz statyczną metodę average, która przyjmuje listę tablicową liczb zmiennoprzecinkowych jako argument i zwraca średnią arytmetyczną wszystkich liczb. Jeżeli lista tablicowa jest pusta, zwróć 0:
+
+
