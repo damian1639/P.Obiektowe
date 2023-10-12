@@ -145,5 +145,31 @@ public class Main {
     }
 }
 Napisz statyczną metodę average, która przyjmuje listę tablicową liczb zmiennoprzecinkowych jako argument i zwraca średnią arytmetyczną wszystkich liczb. Jeżeli lista tablicowa jest pusta, zwróć 0:
+import java.util.List;
+
+public class MathUtils {
+    public static double average(List<Double> numbers) {
+        if (numbers.isEmpty()) {
+            return 0;
+        }
+
+        double sum = 0;
+        for (double number : numbers) {
+            sum += number;
+        }
+
+        return sum / numbers.size();
+    }
+
+    public static void main(String[] args) {
+        List<Double> numberList = List.of(5.0, 12.0, 8.0, 34.0, 19.0);
+        double avg = average(numberList);
+        System.out.println("Średnia: " + avg);
+
+        List<Double> emptyList = List.of();
+        double emptyAvg = average(emptyList);
+        System.out.println("Średnia pustej listy: " + emptyAvg);
+    }
+}
 
 
