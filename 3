@@ -1,0 +1,130 @@
+main
+public class Main {
+    public static void main(String[] args) {
+
+        House domStefana = new House();
+        domStefana.garage = true;
+        domStefana.rooms = 6;
+        domStefana.garden = true;
+        domStefana.floors = 2;
+        domStefana.area = 150;
+
+        System.out.println(domStefana.getValue());
+
+        House domSylwii = new House();
+        domSylwii.garage = false;
+        domSylwii.rooms = 4;
+        domSylwii.garden = true;
+        domSylwii.floors = 2;
+        domSylwii.area = 175;
+
+        System.out.println(domSylwii.getValue());
+
+        House domKlaudii = domSylwii;
+        System.out.println(domKlaudii.getValue());
+        
+
+    }
+}
+house
+public class House {
+    public int area; //powierzchnia
+    public boolean garage; //czy ma garaz
+    public int rooms; //ile pokoi
+    public boolean garden; //czy ma ogrod
+    public int floors; // ile pieter
+
+    public int getValue(){
+        return area * 3000;
+    }
+
+}
+2.
+main
+public class Main {
+    public static void main(String[] args) {
+
+        Dog pies = new Dog();
+        pies.bark();
+    }
+}
+Dog
+public class Dog {
+        public char name;
+        public char bread;
+        public int age;
+
+        public void bark(){
+            System.out.print("hau hau");
+        }
+}
+3.
+main
+public class Main {
+    public static void main(String[] args) {
+
+        Car samochod = new Car();
+        samochod.brand = "Audi";
+        samochod.model = "A4";
+        samochod.speed = 100;
+
+        System.out.println(samochod.accelerate(5));
+        System.out.println(samochod.decelerate(5));
+    }
+}
+Car
+public class Car {
+    public String brand;
+    public String model;
+    public int speed;
+
+    public int accelerate(int value){
+        int wynik = 0;
+        wynik = speed + value;
+        return wynik;
+    }
+    public int decelerate(int value){
+        int wynik = 0;
+        wynik = speed - value;
+        return wynik;
+    }
+}
+4.
+main
+public class Main {
+    public static void main(String[] args) {
+
+        Time jeden = new Time();
+        jeden.hours = 1;
+        jeden.minutes = 30;
+
+        Time dwa = new Time();
+        dwa.hours= 2;
+        dwa.minutes = 35;
+
+        Time trzy = jeden.addTime(dwa);
+        System.out.println(trzy.hours);
+        System.out.println(trzy.minutes);
+        trzy.print();
+    }
+}
+Time
+public class Time {
+    public int hours;
+    public int minutes;
+
+    public Time addTime(Time otherTime){
+        Time newTime = new Time();
+        newTime.hours = (hours + otherTime.hours) % 24;
+        if(otherTime.minutes + minutes >59){
+            newTime.hours++;
+        }
+        newTime.minutes = (minutes + otherTime.minutes) % 60;
+        return newTime;
+    }
+    public void print(){
+        if(minutes<10)
+            System.out.println();
+        System.out.println(hours + ":0" + minutes);
+    }
+}
