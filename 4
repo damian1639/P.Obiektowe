@@ -1,0 +1,162 @@
+main
+public class Main {
+    public static void main(String[] args) {
+        Ksiazka k1 = new Ksiazka();
+        k1.rokWydania = 2000;
+        k1.tytul = "Harry Potter 2";
+        k1.autor = "JKR";
+
+        Ksiazka k2 = new Ksiazka("Pani Jeziora",
+                "Andrzej Sapkowski",
+                1999);
+
+        System.out.println(k2.autor);
+
+        Ksiazka k3 = new Ksiazka();
+        System.out.println(k3.tytul);
+
+        Samochod s1 = new Samochod();
+        System.out.println(s1.model);
+        Samochod s2 = new Samochod("Fiat","126p");
+        System.out.println(s2.marka);
+        System.out.println(s2.rokProdukcji);
+        System.out.println("//====================================");
+        //====================================
+        Osoba os1 = new Osoba("Jakub","Kozicki");
+        System.out.println(os1.wiek);
+        System.out.println(os1.imie);
+        System.out.println("//====================================");
+        //====================================
+       /* Kwadrat k1 = new Kwadrat();
+        System.out.println(k1.bok);
+        Kwadrat k2 = new Kwadrat(15);
+        System.out.println(k2.bok);
+        System.out.println("//====================================");
+        //====================================*/
+        Student st1 = new Student("Jan","Kowalski");
+        System.out.println(st1.nazwisko);
+        System.out.println(st1.kierunekStudiow);
+        System.out.println("//====================================");
+        //====================================
+        System.out.println(Osoba2.zwrocLicznik());
+        Osoba2 o1 = new Osoba2();
+        System.out.println(Osoba2.zwrocLicznik());
+        Osoba2 o2 = new Osoba2();
+        Osoba2 o3 = new Osoba2();
+        System.out.println(Osoba2.zwrocLicznik());
+        System.out.println(Osoba2.zwrocLicznik());
+        System.out.println("//====================================");
+        //====================================
+        double a = Matematyka.PI * 10;
+        System.out.println(a);
+        System.out.println("//====================================");
+        //====================================
+        double liczba1 = 8;
+        double liczba2 = 0;
+        System.out.println(Kalkulator.dodaj(liczba1,liczba2));
+        System.out.println(Kalkulator.odejmij(liczba1,liczba2));
+        System.out.println(Kalkulator.pomnoz(liczba1,liczba2));
+        System.out.println(Kalkulator.podziel(liczba1,liczba2));
+
+        Calc pierwsze = new Calc();
+        System.out.println();
+        System.out.println("//====================================");
+        //====================================
+        Produkt p1 = new Produkt();
+        Produkt p2 = new Produkt();
+        Produkt p3 = new Produkt();
+        System.out.println(Produkt.zwrocLicznik());
+        Produkt p4 = new Produkt();
+        System.out.println(Produkt.zwrocLicznik());
+    }
+}
+ksiazka
+public class Ksiazka {
+    public String tytul;
+    public String autor;
+    public int rokWydania;
+
+    public Ksiazka()
+    {
+        this.tytul = "default";
+        this.autor = "default";
+        this.rokWydania = 2023;
+    }
+    public Ksiazka(String tytul, String autor, int rokWydania)
+    {
+        this.tytul = tytul;
+        this.autor = autor;
+        this.rokWydania = rokWydania;
+    }
+}
+osoba
+public class Osoba {
+    public String imie;
+    public String nazwisko;
+    public int wiek;
+
+    public Osoba(String imie, String nazwisko, int wiek)
+    {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.wiek = wiek;
+    }
+
+    public Osoba(String imie, String nazwisko)
+    {
+        this(imie,nazwisko,0);
+    }
+}
+osoba 2
+public class Osoba2 {
+    public String imie;
+    public static int licznik;
+
+    public Osoba2()
+    {
+        this("Default");
+    }
+
+    public Osoba2(String imie)
+    {
+        this.imie = imie;
+        licznik++;
+    }
+
+    public static int zwrocLicznik()
+    {
+        return licznik;
+    }
+}
+student
+public class Student {
+    public String imie;
+    public String nazwisko;
+    public String kierunekStudiow;
+
+    public Student(String imie, String nazwisko, String kierunekStudiow)
+    {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.kierunekStudiow = kierunekStudiow;
+    }
+
+    public Student(String imie, String nazwisko)
+    {
+        this(imie, nazwisko, "nieznany");
+    }
+}
+kwadrat 
+public class Kwadrat {
+    public int bok;
+
+    public Kwadrat(int bok)
+    {
+        this.bok = bok;
+    }
+
+    public Kwadrat()
+    {
+        this(1);
+    }
+}
