@@ -1,0 +1,166 @@
+main
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Animal("Krowa");
+        Animal animal2 = new Animal("Krowa");
+        System.out.println(animal.equals(animal2));
+        animal2.dajGlos();
+
+        Cat kot = new Cat("Filemon");
+        System.out.println(kot);
+        kot.dajGlos();
+        Animal animal3 = new Cat("Filemon");
+        System.out.println(animal3.getClass());
+
+
+        //Person
+        //Person p1 = new Person("abc", "dgf");
+        //Pojazd
+        Pojazd p1 = new Pojazd();
+        p1.jedz();
+        Samochod s1 = new Samochod();
+        s1.jedz();
+
+        System.out.println();
+    }
+}
+animal
+public class Animal {
+    public String nazwa;
+
+    public Animal(){}
+
+    public Animal(String nazwa){
+        this.nazwa = nazwa;
+    }
+
+
+    @Override
+    public String toString(){
+        return nazwa;
+    }
+
+
+    @Override
+    public boolean equals(Object other){
+        if(other instanceof Animal o){
+            return this.nazwa.equals (o.nazwa);
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public void dajGlos(){
+        System.out.println("Odglos zwierzaka");
+    }
+}
+
+
+class Cat extends Animal{
+    public Cat(String nazwa){
+        super(nazwa);
+    }
+
+    @Override
+    public void dajGlos(){
+        System.out.println("Odglos zwierzaka");
+    }
+}
+pojazd
+public class Pojazd {
+    public void jedz{
+        System.out.println("Pojazd jedzie");
+    }
+}
+class Samochod extends Pojazd{
+
+    @Override
+    public void jedz(){
+        super.jedz();
+        System.out.println("Pojazd jedzie");
+    }
+
+}
+Kalkulator
+public class Kalkulator {
+    public int dodaj(int a, int b){
+        return a+b;
+
+    }
+}
+class KalkulatorRozszerzony extends Kalkulator{
+
+    public int dodaj(int a, int b,int c){
+        super.dodaj(a,b);
+
+    }
+}
+Komputer
+public class Komputer {
+
+    public void uruchom(){
+
+        System.out.println("Komputer uruchomiony");
+    }
+}
+
+
+
+class Laptop extends Komputer{
+
+    @Override
+    protected void uruchom(){
+        System.out.println("Komputer uruchomiony");
+    }
+}
+Czlowiek
+public class Istota {
+}
+
+
+
+class Czlowiek extends Istota{
+
+
+}
+
+
+class Programista extends  Czlowiek{
+
+}
+Person
+public class Person {
+    private String firstName;
+    protected String lastName;
+
+
+    public Person(){}
+    public Person(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
+    //gettery
+    public String getFirstName(){
+        return firstName;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+}
+
+
+class Employee extends Person{
+    public Employee(String firstName, String lastName){
+        super(firstName, lastName);
+    }
+
+
+    public void displayData(){
+        System.out.println();
+    }
+
+}
