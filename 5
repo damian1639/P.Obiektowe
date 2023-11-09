@@ -1,149 +1,152 @@
 main
 public class Main {
     public static void main(String[] args) {
-        Animal animal = new Animal("Krowa");
-        Animal animal2 = new Animal("Krowa");
+        Animal animal = new Animal("zebra");
+        Animal animal2 = new Animal("zebra");
+        System.out.println(animal == animal2);
         System.out.println(animal.equals(animal2));
-        animal2.dajGlos();
-
-        Cat kot = new Cat("Filemon");
+        animal.dajGlos();
+        Cat kot = new Cat("Puszek");
         System.out.println(kot);
         kot.dajGlos();
         Animal animal3 = new Cat("Filemon");
         System.out.println(animal3.getClass());
 
+        Person person = new Person("Jan","Kowalski");
+        Employee a1 = new Employee("Mateusz","Nowak");
+        System.out.println(person);
+        System.out.println(a1);
+        System.out.println(person.firstName + "  " + person.lastName);
+        a1.displayData();
 
-        //Person
-        //Person p1 = new Person("abc", "dgf");
-        //Pojazd
-        Pojazd p1 = new Pojazd();
-        p1.jedz();
-        Samochod s1 = new Samochod();
-        s1.jedz();
+        Book ksiazka = new Book("Teoria snów","Jan Kowalski",23);
 
-        System.out.println();
+        Pojazd auto1 = new Pojazd();
+        auto1.jedz();
+        Samochod auto2 = new Samochod("Audi");
+        auto2.jedz();
+        System.out.println("");
+
+        System.out.println(Kalkulator.dodaj(5,11));
+        System.out.println(KalkulatorRozszerzony.dodaj(15,5,154));
+
+        System.out.println("");
+        Komputer pc1 = new Komputer();
+        pc1.uruchom();
+        Laptop lap1 = new Laptop();
+        lap1.uruchom();
+        System.out.println("");
+
+        Istota istota1 = new Istota();
+        System.out.println("");
+        Czlowiek człowiek1 = new Czlowiek();
+        System.out.println("");
+        Programista prog1 = new Programista();
+
+
     }
 }
 Animal
 public class Animal {
-    public String nazwa;
+    public String name;
+    public Animal(){
 
-    public Animal(){}
-
-    public Animal(String nazwa){
-        this.nazwa = nazwa;
     }
-
-
+    public Animal(String name){
+        this.name=name;
+    }
     @Override
     public String toString(){
-        return nazwa;
+        return this.name;
     }
-
-
     @Override
     public boolean equals(Object other){
-        if(other instanceof Animal o){
-            return this.nazwa.equals (o.nazwa);
+        if(other instanceof Animal temp){
+            return this.name.equals(temp.name);
         }
-        else{
+        else
             return false;
-        }
     }
-
-
     public void dajGlos(){
-        System.out.println("Odglos zwierzaka");
+        System.out.println("Odgłos zwierzaka");
     }
 }
-
-
 class Cat extends Animal{
-    public Cat(String nazwa){
-        super(nazwa);
+    public Cat(String name){
+        super(name);
     }
-
     @Override
     public void dajGlos(){
-        System.out.println("Odglos zwierzaka");
+        System.out.println("Miau miau");
     }
 }
 Pojazd
 public class Pojazd {
-    public void jedz{
+    public void jedz(){
         System.out.println("Pojazd jedzie");
     }
 }
 class Samochod extends Pojazd{
-
+    public String marka;
+    public Samochod(String marka){
+        this.marka = marka;
+    }
     @Override
     public void jedz(){
         super.jedz();
-        System.out.println("Pojazd jedzie");
+        System.out.println(marka);
     }
-
 }
 Kalkulator
 public class Kalkulator {
-    public int dodaj(int a, int b){
+    public static int dodaj(int a, int b){
         return a+b;
-
     }
 }
 class KalkulatorRozszerzony extends Kalkulator{
-
-    public int dodaj(int a, int b,int c){
-        super.dodaj(a,b);
-
+    public static int dodaj(int a,int b,int c){
+        return a + b + c;
     }
 }
 Komputer
 public class Komputer {
-
     public void uruchom(){
-
         System.out.println("Komputer uruchomiony");
     }
 }
-
-
-
 class Laptop extends Komputer{
-
     @Override
-    protected void uruchom(){
-        System.out.println("Komputer uruchomiony");
+        public void uruchom(){
+        System.out.println("Laptop uruchomiony");
     }
 }
-Czlowiek
+Istota
 public class Istota {
+    public Istota(){
+        System.out.println("Tworze istote");
+    }
 }
-
-
 
 class Czlowiek extends Istota{
-
-
+    public Czlowiek(){
+        System.out.println("Tworze czlowieka");
+    }
 }
 
-
-class Programista extends  Czlowiek{
-
+class Programista extends Czlowiek{
+    public Programista(){
+        System.out.println("Tworze programiste");
+    }
 }
 Person
 public class Person {
-    private String firstName;
+    public String firstName;
     protected String lastName;
 
-
-    public Person(){}
     public Person(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-
-    //gettery
     public String getFirstName(){
         return firstName;
     }
@@ -151,16 +154,35 @@ public class Person {
         return lastName;
     }
 }
-
-
 class Employee extends Person{
     public Employee(String firstName, String lastName){
-        super(firstName, lastName);
+        super(firstName,lastName);
     }
-
-
     public void displayData(){
-        System.out.println();
+        System.out.println(getFirstName() + "  " + getLastName());
+    }
+}
+Book
+public class Book {
+    public String title;
+    public String author;
+    public int numberOfPages;
+
+    public Book(String title,String author, int numberOfPages){
+        this.title= (title.isEmpty()) ? title : "";
+        this.author= (author.isEmpty()) ? author : "";
+        this.numberOfPages = (numberOfPages<0) ? numberOfPages : 1;
+
     }
 
+    public String toString(){
+        return "Book: " + title + "by " + author + ", Pages: " +numberOfPages;
+    }
+    public boolean equals(Object obj){
+        if(this ==obj) return true;
+        if(obj==null || getClass()!=obj.getClass()) return false;
+        Book otherBook = (Book) obj;
+        return title.equals(otherBook.title) && author.equals(otherBook.author) && numberOfPages == otherBook.numberOfPages;
+
+    }
 }
