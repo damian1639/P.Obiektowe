@@ -93,3 +93,26 @@ class Laptop extends Computer{
       return  super.calculatePrice()+1000;
 
     }
+
+
+main
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args){
+        ArrayList<Double>partsPrice = new ArrayList<>();
+        partsPrice.add(12.0);
+        partsPrice.add(17.0);
+        partsPrice.add(20.0);
+        Computer k1=new Computer("Dell","i3",partsPrice);
+        Laptop l1 = new Laptop("Dell","i3",partsPrice,-12);
+
+
+        System.out.println(k1.toString()+l1.toString()+k1.equals(l1)+l1.equals(k1));
+        k1.calculatePrice();
+        l1.calculatePrice();
+
+
+    }
+}
