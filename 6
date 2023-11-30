@@ -1,0 +1,74 @@
+Hashcode
+import java.util.Objects;
+
+public class Animal {
+    String name;
+    int age;
+    double weight;
+
+    public Animal(String name, int age, double weight) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && Double.compare(weight, animal.weight) == 0 && Objects.equals(name, animal.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + age;
+        long doubleToLong = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (doubleToLong ^ (doubleToLong >>> 32));
+        result = 31 * result + name.hashCode();
+        return result;
+    }
+}
+
+main
+public class Main {
+    public static void main(String[] args) {
+
+        Animal a1 = new Animal("j", 8, 20);
+        Animal a2 = new Animal("j", 2, 20);
+        System.out.println(a2.hashCode() + "\n" + a1.hashCode());
+        System.out.println(a1.equals(a2));
+        System.out.println( Integer.toHexString(a2.hashCode()) + "\n" + Integer.toHexString(a1.hashCode()));
+    }
+}
+
+RECORD
+
+public record Person(String name, int age) {
+
+    public Person{
+        if(age<0)
+        {
+            age = 0;
+        }
+    }
+    public static void greet()
+    {
+        System.out.println("Czesc");
+    }
+
+    public Person(String name){
+        this(name,0);
+    }
+
+}
+main
+     Person p1 = new Person("Damian",19);
+        Person p2 = new Person("Damian",19);
+        System.out.println(p1);
+        System.out.println(p1.equals(p2));
+        System.out.println(p2.age());
+        Person.greet();
+
+    
