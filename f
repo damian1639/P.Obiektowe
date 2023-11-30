@@ -116,3 +116,17 @@ public class Main {
 
     }
 }
+
+Car
+public record Car(String brand, String model, double fuelConsumptionPer100km) {
+
+    public double fuelCost(double fuelPrice, double distance)
+    {
+        return fuelPrice*(distance*(fuelConsumptionPer100km/100));
+    }
+}
+
+        Car c1 = new Car("Audi", "A5", 10);
+        System.out.println(c1.fuelCost(6,100));
+
+
