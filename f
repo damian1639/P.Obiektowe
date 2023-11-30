@@ -93,7 +93,7 @@ class Laptop extends Computer{
       return  super.calculatePrice()+1000;
 
     }
-
+}
 
 main
 
