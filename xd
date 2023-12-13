@@ -289,7 +289,58 @@ namespace isi1_2
             w.rodzic = null;
             return w;
         }
-       
+
+
+
+        Wezel3 UsunGdy1Dzieci(Wezel3 w)
+        {
+            Wezel3 dziecko = null;
+            if (w.lewe != null)
+            {
+                dziecko = w.lewe;
+                w.lewe = null;
+            }
+            else;
+            {
+                dziecko = w.prawe;
+                w.prawe = null;
+            }
+            dziecko.rodzic = w.rodzic;
+            if (w.rodzic == null)
+            {
+                this.korzen = null;
+                return w;
+            }
+            if (w.rodzic.lewe == w)      
+                w.rodzic.lewe = dziecko;        
+            else         
+                w.rodzic.prawe = dziecko;
+            w.rodzic = null;
+            return w;
+        }
+
+        Wezel3 UsunGdy2Dzieci(Wezel3 w)
+        {
+            var zamiennik = this.Nastepnik(w);
+            if (zamiennik.GetliczbaDzieci() == 0)
+                zamiennik = this.UsunGdy0Dzieci(zamiennik);
+            else
+                zamiennik = this.UsunGdy1Dzieci(zamiennik);
+            if (w.rodzic != null)
+            {
+                if (w.rodzic.lewe == w)
+                {
+                    w.rodzic.lewe = zamiennik;
+                }
+                else
+                    w.rodzic.prawe = zamiennik;
+            }
+            zamiennik.rodzic = w.rodzic;
+            w.rodzic = null;
+            //niedokonczone
+
+        }
+
 
         private Wezel3 ZnajdzRodzica(int a)
         {
