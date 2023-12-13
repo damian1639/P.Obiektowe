@@ -274,7 +274,21 @@ namespace isi1_2
             }
             return w;
         }
-          
+
+        Wezel3 UsunGdy0Dzieci(Wezel3 w)
+        {
+            if (w.rodzic == null)
+            {
+                this.korzen = null;
+                return w;
+            }
+            if (w.rodzic.lewe == w)
+                w.rodzic.lewe = null;
+            else
+                w.rodzic.prawe = null;
+            w.rodzic = null;
+            return w;
+        }
        
 
         private Wezel3 ZnajdzRodzica(int a)
