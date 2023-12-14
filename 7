@@ -1,0 +1,190 @@
+INTERFEJS
+MUSICPLAYER
+public interface MusicPlayer {
+
+    public void turnOn();
+    public void turnOff();
+    public void nextTrack();
+}
+public class Radio implements MusicPlayer {
+
+    boolean ison = false;
+    public void turnOn()
+    {
+        System.out.println("Radio włączone");
+        ison = true;
+    }
+
+    public void turnOff() {
+        System.out.println("Radio wyłączone");
+        ison = false;
+
+    }
+
+    public void nextTrack() {
+        System.out.println("Zmieniono stację radiową");
+
+    }
+
+}
+
+MEDIAPLAYER
+import javax.print.attribute.standard.Media;
+
+public interface MediaPlayer {
+    abstract void play(String trackName);
+    abstract void pause();
+    abstract String getCurrentTrack();
+}
+
+class AudioPlayer implements MediaPlayer
+{
+    public String currentTrack;
+
+    @Override
+    public void play(String trackName)
+    {
+        System.out.println("Odtwarzanie " + trackName);
+        currentTrack = trackName;
+    }
+
+    public void pause()
+    {
+        System.out.println("Zatrzymane");
+    }
+
+    public String getCurrentTrack()
+    {
+        return currentTrack;
+    }
+}
+class VideoPlayer implements MediaPlayer
+{
+    public String currentTrack;
+
+    @Override
+    public void play(String trackName)
+    {
+        System.out.println("Odtwarzanie" + trackName);
+        currentTrack = trackName;
+    }
+
+    public void pause()
+    {
+        System.out.println("Zatrzymane");
+    }
+
+    public String getCurrentTrack()
+    {
+        return currentTrack;
+    }
+}
+MEDIAPLAYERTEST
+public class MediaPlayerTest {
+        public static void main(String[] args)
+        {
+            AudioPlayer a1 = new AudioPlayer();
+            a1.play("p1");
+            a1.pause();
+            a1.getCurrentTrack();
+
+
+        }
+}
+STORAGE
+public interface Storage {
+    abstract boolean save(String data);
+    abstract boolean delete(String identifier);
+    abstract String retrieve(String identifier);
+}
+
+class FileStorage implements Storage
+{
+    @Override
+    public boolean save(String data) {
+        System.out.println("zapisano " + data);
+        return true;
+    }
+
+    @Override
+    public boolean delete(String identifier) {
+        System.out.println("Usuniete " + identifier);
+        return true;
+    }
+
+    @Override
+    public String retrieve(String identifier) {
+        System.out.println("pobarno " + identifier);
+        return "Pobrano dane";
+    }
+}
+
+class DatabaseStorage implements Storage
+{
+
+    @Override
+    public boolean save(String data) {
+        System.out.println("zapisano " + data);
+        return true;
+    }
+
+    @Override
+    public boolean delete(String identifier) {
+        System.out.println("Usuniete " + identifier);
+        return true;
+    }
+
+    @Override
+    public String retrieve(String identifier) {
+        System.out.println("pobarno " + identifier);
+        return "Pobrano dane";
+    }
+}
+
+STORAGETEST
+
+public class StorageTest {
+    public static void main(String[] args) {
+        Storage s1 = new FileStorage();
+        s1.save("Dane s1");
+        s1.retrieve("123");
+        s1.delete("456");
+
+
+    }
+}
+
+VEHICLE MANAGER
+import javax.swing.plaf.basic.BasicTreeUI;
+
+public interface VehicleManager {
+    abstract String startEngine();
+    abstract int getFuelLevel();
+}
+
+class Car implements VehicleManager
+{
+    @Override
+    public String startEngine() {
+        System.out.println("Silnik samochodu uruchomiony");
+        return null;
+    }
+
+    @Override
+    public int getFuelLevel() {
+        System.out.println(50);
+        return 0;
+    }
+}
+
+VEHICLEMAAGERTEST
+public class VehicleManagerTest {
+    public static void main(String[] args) {
+        VehicleManager v1 = new Car();
+        v1.getFuelLevel();
+        v1.startEngine();
+        VehicleManager v2 = new Motorcycle();
+        v2.startEngine();
+        v2.getFuelLevel();
+    }
+}
