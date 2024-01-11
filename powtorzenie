@@ -1,0 +1,68 @@
+1. Napisz program, który prosi użytkownika o wpisanie dwóch liczb, a następnie dzieli pierwszą liczbę przez drugą. Program powinien obsługiwać dwa rodzaje wyjątków:
+ArithmeticException w przypadku dzielenia przez zero i InputMismatchException, gdy użytkownik wprowadzi coś innego niż liczby.
+W obu przypadkach należy wyświetlić stosowny komunikat błędu i poprosić użytkownika o ponowne wprowadzenie danych. Wykorzystaj typ int.
+
+2. Zaprojektuj i zaimplementuj klasę wyjątku NiepoprawnyFormatDanychException, która będzie rozszerzać klasę Exception. Następnie napisz metodę sprawdzFormatDanych(String dane),
+która rzuci wyjątek NiepoprawnyFormatDanychException, jeśli podany ciąg znaków nie odpowiada określonemu wzorcowi (np. nie jest adresem e-mail). W metodzie main przetestuj działanie tej metody, obsługując wyjątek i informując użytkownika o błędzie.
+
+3. Napisz klasę Product, która zawiera pola: name (typu String), price (typu double) i productionYear (typu int).
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Product były sortowane rosnąco według daty produkcji. Stwórz listę tablicową 5 obiektów klasy Product i posortuj ją według sprecyzowanego kryterium.
+
+4. Napisz klasę Person z polami firstName (typu String), lastName (typu String) oraz birthYear (typu int).
+Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: LastNameComparator do porównywania obiektów po polu lastName (alfabetycznie od A do Z) oraz BirthDateComparator do porównywania obiektów po polu birthYear (od najstarszej do najmłodszej osoby). 
+Stwórz tablicę 5 obiektów klasy Person i posortuj ją zgodnie z oboma kryteriami (najpierw po nazwisku, a następnie przy równości po dacie urodzenia).
+
+5. Wykonaj poniższe czynności:
+Stwórz interfejs Powiadomienie z metodą wyślij(String wiadomość).
+Utwórz klasę Email, która implementuje Powiadomienie i symuluje wysyłanie wiadomości e-mail.
+Utwórz klasę Użytkownik, która posiada prywatne pole typu Powiadomienie. W konstruktorze przyjmij Powiadomienie jako argument. 
+Dodaj metodę powiadomOModernizacji(String informacja), która będzie delegować zadanie wysyłania powiadomienia do obiektu klasy Powiadomienie.
+
+
+public class Main {
+    public static void main(String[] args) {
+        Uzytkownik u1 = new Uzytkownik(new Discord());
+        Uzytkownik u2 = new Uzytkownik(new Email());
+
+        u1.powiadomOModernizacji("nie wiem");
+        u2.powiadomOModernizacji("xd");
+    }
+}
+
+public interface Powiadomienie {
+    public void wyslij(String Wiadomosc);
+}
+
+
+public class Uzytkownik {
+    private Powiadomienie userNotification;
+
+    public Uzytkownik(Powiadomienie userNotification) {
+        this.userNotification = userNotification;
+    }
+
+    public void powiadomOModernizacji(String informacja)
+    {
+        userNotification.wyslij(informacja);
+    }
+}
+
+
+public class Email implements Powiadomienie{
+
+    public void wyslij(String wiadomosc)
+    {
+        System.out.println("Wyslano mail o tesci:" + wiadomosc);
+    }
+
+}
+
+
+public class Discord implements Powiadomienie{
+
+    public void wyslij(String wiadomosc)
+    {
+        System.out.println("Nowa discord:" + wiadomosc);
+    }
+}
+
